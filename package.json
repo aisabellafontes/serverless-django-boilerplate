@@ -1,0 +1,10 @@
+{
+  "name": "serverless-django-boilerplate",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-python-requirements": "^4.2.4",
+    "serverless-wsgi": "^1.7.1"
+  }
+}

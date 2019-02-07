@@ -1,0 +1,4 @@
+DB_USER: boilerplate
+DB_PASSWORD: boilerplate
+DB_HOST: serverless-django-boilerplate-db.czynanf6wkpz.us-east-1.rds.amazonaws.com
+DB_PORT: 5432

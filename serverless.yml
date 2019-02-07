@@ -1,0 +1,36 @@
+service: serverless-django-boilerplate
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+  variables: ${file(./variables.yml)}
+
+provider:
+  name: aws
+  runtime: python3.7
+
+functions:
+  hello:
+    environment: ${self:custom.variables}
+    handler: handler.hello
+    events:
+      - http: ANY /
+      - http: ANY {proxy+}
+
+  migrate:
+    environment: ${self:custom.variables}
+    handler: migrate.handler
+
+plugins:
+  - serverless-wsgi
+  - serverless-python-requirements
+
+package:
+  exclude:
+    - node_modules/**
+    - .git/**
+    - env/**
+    - .vscode/**
+    - docker-compose.yml
+    - Dockerfile
+    - start.sh

@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  serverless-django-boilerplate-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: serverless-django-boilerplate-app
+    command: /bin/bash /code/start.sh
+    container_name: serverless-django-boilerplate-app
+    volumes:
+      - .:/code
+    ports:
+      - '8001:8000'
+    links:
+      - serverless-django-boilerplate-db
+    networks:
+      - serverless-django-boilerplate-network
+
+  serverless-django-boilerplate-db:
+    image: postgres:9.6
+    container_name: serverless-django-boilerplate-db
+    environment:
+      POSTGRES_PASSWORD: boilerplate
+      POSTGRES_USER: admin
+      POSTGRES_DB: postgres
+    ports:
+      - '8003:5432'
+    networks:
+      - serverless-django-boilerplate-network
+    volumes:
+      - ./serverless-django-boilerplate-volume:/var/lib/postgresl/data/
+      - .:/code
+
+networks:
+  serverless-django-boilerplate-network:
+
+volumes:
+  serverless-django-boilerplate-volume:
