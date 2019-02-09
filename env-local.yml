@@ -1,0 +1,5 @@
+DB_USER: 'boilerplate'
+DB_PASSWORD: 'boilerplate'
+DB_HOST: 'localhost'
+DB_PORT: 8003
+DJANGO_SETTINGS_MODULE: 'boilerplate.settings.local'

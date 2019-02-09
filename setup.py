@@ -3,7 +3,6 @@ import os
 import sys
 
 def handler(event, context):
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "boilerplate.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError:
@@ -20,3 +19,7 @@ def handler(event, context):
             )
         raise
     execute_from_command_line(['manage.py', 'migrate'])
+
+    return { 
+        'Request ID:': context.aws_request_id,
+    } 

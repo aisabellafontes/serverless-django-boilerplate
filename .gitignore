@@ -1,7 +1,6 @@
 # Distribution / packaging
 .Python
 env/
-serverless-django-boilerplate-volume/
 build/
 develop-eggs/
 dist/
@@ -16,9 +15,10 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-.vscode/
-node_modules/
 __pycache__/
+node_modules/
+serverless-django-boilerplate-volume/
+staticfiles/
 
 # Serverless directories
 .serverless

@@ -2,9 +2,7 @@
 import os
 import sys
 
-def hello(event, context):
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "boilerplate.settings")
-
+def handler(event, context):
     try:
         from django.core.management import execute_from_command_line
     except ImportError:
@@ -20,4 +18,8 @@ def hello(event, context):
                 "forget to activate a virtual environment?"
             )
         raise
-    execute_from_command_line(['manage.py', 'runserver'])
+    execute_from_command_line(['manage.py', 'shell', '-c', "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@admin.com', 'admin')"])
+
+    return { 
+        'Request ID:': context.aws_request_id,
+    } 
